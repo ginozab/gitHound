@@ -16,11 +16,10 @@ Create a new directory in your terminal and then initialize it with the command:
 git init
 ```
 
-After running this command, ask one of us to share our repository with you 
-and then clone our repository by running this command: 
+After running this command, then clone our repository by running this command: 
 
 ```shell
-git clone git@bitbucket.org:boanosa/cs280-team2-git.git
+git clone https://github.com/ginozab/gitHound.git
 ```
 
 This will then give you full access to our code. 
