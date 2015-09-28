@@ -1,5 +1,3 @@
-Brandon Ginoza, Almog Boanos, Herbie Torrance
-
 # gitHound System
 
 This is a system that allows you to find all of the git repositories in 
