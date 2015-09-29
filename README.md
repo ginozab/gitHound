@@ -8,13 +8,7 @@ expand the status of any one of the directories you specify.
 
 # How to get
 
-Create a new directory in your terminal and then initialize it with the command: 
-
-```shell
-git init
-```
-
-After running this command, then clone our repository by running this command: 
+Clone our repository by running this command: 
 
 ```shell
 git clone https://github.com/ginozab/gitHound.git
