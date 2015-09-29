@@ -33,14 +33,14 @@ option to expand the status of a given git repository.
 
 ```shell
 javac gitHound.java
-java gitHound ../../path/to/directory quick
+java gitHound /path/to/directory quick
 ```
 
 or 
 
 ```shell
 javac gitHound.java
-java gitHound ../ full
+java gitHound /path/to/directory full
 ```
 
 # Expand Feature
