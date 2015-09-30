@@ -57,7 +57,7 @@ If no, it will say "No expansion and terminate the program".
 
 # Video Example
 
-[![asciicast](https://asciinema.org/a/5mkifdwolsi6eaaow2kefmgzr.png)](https://asciinema.org/a/5mkifdwolsi6eaaow2kefmgzr)
+[![asciicast](https://asciinema.org/a/5fkzyntexny362xqofp6moyhh.png)](https://asciinema.org/a/5fkzyntexny362xqofp6moyhh)
 
 # Thank you for choosing gitHound!
 
