@@ -6,53 +6,62 @@ public class ExpandStatus {
 	// int to detect if this is first repo expansion or not
 	private static int count = 0;
 
-	public static void expand() {
+	public static void expand(boolean anyRepos) {
 
-		// prompt print out
-		System.out.println("**********************************************************\n");
-		if (count == 0) {
-			System.out.println("Would you like to expand the status information of a repo above?");
+		if (anyRepos == false) {
+			System.out.println("No git repositories were found in the specified directory.\n");
+			System.out.println("**************************************************************\n");
+			System.out.println("Thanks for using gitHound!\n");
 		}
 		else {
-			System.out.println("Would you like to expand the status information of a new repo above?");
-		}
-		System.out.println("Enter: (yes/no)");
+			// prompt print out
+			
+			if (count == 0) {
+				System.out.println("\n**************************************************************\n");
+				System.out.println("Would you like to expand the status information of a repo above?");
+			}
+			else {
+				System.out.println("**************************************************************\n");
+				System.out.println("Would you like to expand the status information of another repo above?");
+			}
+			System.out.println("Enter: (yes/no)");
 
-		// method to read in if user wants to expand a repo status or not
-		try {
-		    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-		    
-		    // boolean to detect valid answer
-		    boolean validAns = false;
-
-		   	do {
-		   		// take in user input
-			    String s = bufferRead.readLine();
+			// method to read in if user wants to expand a repo status or not
+			try {
+			    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 			    
-			    // if yes go to showStatus method and change validAns to true
-			    if (s.equals("yes") || s.equals("Yes") || s.equals("YES")) {
-			    	showStatus();
-			    	validAns = true;
-			    }
+			    // boolean to detect valid answer
+			    boolean validAns = false;
 
-			    // turn validAns to true
-			    else if (s.equals("no") || s.equals("No") || s.equals("NO")) {
-			    	System.out.println("No expansion.");
-			    	validAns = true;
-			    }
+			   	do {
+			   		// take in user input
+				    String s = bufferRead.readLine();
+				    
+				    // if yes go to showStatus method and change validAns to true
+				    if (s.equals("yes") || s.equals("Yes") || s.equals("YES")) {
+				    	showStatus();
+				    	validAns = true;
+				    }
 
-			    // else ask for new input yes or no
-			    else {
-			    	System.out.println("Wrong input. Input (yes/no)");
-			    }
+				    // turn validAns to true
+				    else if (s.equals("no") || s.equals("No") || s.equals("NO")) {
+				    	System.out.println("\nThank you for using gitHound!");
+				    	validAns = true;
+				    }
 
-			} while (validAns == false);
+				    // else ask for new input yes or no
+				    else {
+				    	System.out.println("Wrong input. Input (yes/no)");
+				    }
 
-		} // try
-		
-		catch(IOException e) {
-			e.printStackTrace();
-		} // catch
+				} while (validAns == false);
+
+			} // try
+			
+			catch(IOException e) {
+				e.printStackTrace();
+			} // catch
+		}
 
 	} // expand method
 
@@ -94,18 +103,20 @@ public class ExpandStatus {
 
 			String status = sb2.toString();
 			// print out the status
-			System.out.println("**************************************************");
-			System.out.println("\n" + status);
+			System.out.println("\n**************************************************************\n");
+			System.out.println(status);
 
 			// recursion to restart process
-			expand();
+			expand(true);
 
 		} // try
 		
 		catch(IOException e) {
 			//e.printStackTrace();
-			System.out.println("\n*******************************");
-			System.out.println("\nInvalid working directory path! \nExiting program...");
+			System.out.println("\n**************************************************************\n");
+			System.out.println("Invalid working directory path! \nPlease try again\nIf you are wondering why you should expand a repository, its because its so much fun! :D\n");
+			expand(true);
+
 		} // catch
 		catch(Exception e) {
 			e.printStackTrace();

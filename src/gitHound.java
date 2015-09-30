@@ -19,6 +19,9 @@ public class gitHound {
 	private static int modified = 0; 
 	private static int staged = 0;
 
+	private static int total = 0;
+	private static boolean anyRepos = false;
+
 	public static void main(String[] args) {
 		// if no arguments are inputed show usage instructions
 		if (args.length == 0) {
@@ -32,10 +35,21 @@ public class gitHound {
 		else if (args.length == 2 && args[1].equals("full")){
 			String dir = args[0];
 			File cDir = new File(dir); // get current directory
+
 			instructions();
+			System.out.println("Here is what we found:");
+			System.out.println("\n**************************************************************\n");
+
 			boolean quickSummary = false;
 			findGitDirs(cDir, quickSummary);
-			ExpandStatus.expand();
+			//System.out.println(total);
+			if (total != 0) {
+				anyRepos = true;
+				
+			}
+			else {}
+
+			ExpandStatus.expand(anyRepos);
 		}
 		// if they want quick make quicksummary1 true and just print quick summary stats
 		else if (args.length == 2 && args[1].equals("quick")) {
@@ -71,8 +85,12 @@ public class gitHound {
 				if (file.isDirectory()) {
 					
 					// This is the key if the path contains .git
-					if (file.getCanonicalPath().contains(".git")) {
+					String p = file.getCanonicalPath();
+					if (p.endsWith(".git") && !p.contains(".git.")) {
 						// call gitInfo method
+						//System.out.println(file.getCanonicalPath());
+						total++;
+						//System.out.println(file.getCanonicalPath().length());
 						gitInfo(file, quickSummary);
 						
 					} // if contains .git
@@ -116,7 +134,7 @@ public class gitHound {
 			ProcessBuilder p = new ProcessBuilder("/usr/bin/git","status");
 			String path = file.getCanonicalPath();
 			//System.out.println(ANSI_WHITE + fetchDir(path) + ANSI_RESET);
-			
+			//System.out.println(path);
 			// get the path without .git at end using fetchDir
 			// then change working directory to it with p.directory command
 			String newPath1 = fetchDir(path);
@@ -302,9 +320,9 @@ public class gitHound {
 * ***********************************************************************/
 
 	public static void instructions() {
-
 		System.out.println("\nThank you for choosing gitHound!");
-		System.out.println("Here are the color code instructions:\n");
+		System.out.println("\n**************************************************************");
+		System.out.println("\nHere are the color code instructions:\n");
 		System.out.println("Directory color scheme:");
 		System.out.println(ANSI_GREEN + "Green" + ANSI_RESET + " -> clean repo");
 		System.out.println(ANSI_RED + "Red" + ANSI_RESET + " -> repo not up to date");
@@ -315,7 +333,6 @@ public class gitHound {
 		System.out.println(ANSI_CYAN + "Cyan + " + ANSI_RESET + " -> repo ahead of origin");
 		System.out.println(ANSI_WHITE + "White + " + ANSI_RESET + " -> Modified files not commited\n");
 
-		System.out.println("Here are the git repos we found in your specified directory: \n");
 
 	} // instructions method
 
@@ -340,6 +357,9 @@ public class gitHound {
 		System.out.println(modified);
 		System.out.print("Number of git repositories with staged but not committed files: ");
 		System.out.println(staged);
+		System.out.println("***********************************************************************\n");
+		System.out.print("Number of total git repositories found in specified directory: ");
+		System.out.println(total);
 		System.out.println("***********************************************************************\n");
 	}
 
