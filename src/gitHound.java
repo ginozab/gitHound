@@ -61,7 +61,14 @@ public class gitHound {
 			String dir = args[0];
 			File cDir = new File(dir); // get current directory
 			boolean quickSummary1 = true;
+			
+			System.out.println("\nThank you for choosing gitHound!");
+			System.out.println("Here is a quick summary of all the git repos in your specified directory: \n");
+			System.out.println("***********************************************************************");
+			System.out.println("Running...\n");
+			
 			findGitDirs(cDir, quickSummary1);
+
 			printQuickSum();
 		}
 		// anything else show usage instructions
@@ -349,9 +356,6 @@ public class gitHound {
 
 	public static void printQuickSum() {
 
-		System.out.println("\nThank you for choosing gitHound!");
-		System.out.println("Here is a quick summary of all the git repos in your specified directory: \n");
-		System.out.println("***********************************************************************\n");
 		System.out.print("Number of clean git repositories: ");
 		System.out.println(clean);
 		System.out.print("Number of git repositories ahead of origin: ");
