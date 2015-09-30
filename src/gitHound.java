@@ -3,6 +3,7 @@ import java.io.*;
 
 public class gitHound {
 
+	// color print outs
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -13,6 +14,7 @@ public class gitHound {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
+	// quick stat variables
 	private static int untrackedF = 0;
 	private static int clean = 0; 
 	private static int ahead = 0;
@@ -20,6 +22,7 @@ public class gitHound {
 	private static int staged = 0;
 
 	private static int total = 0;
+	// boolean to check if no repos are found
 	private static boolean anyRepos = false;
 
 	public static void main(String[] args) {
@@ -36,18 +39,20 @@ public class gitHound {
 			String dir = args[0];
 			File cDir = new File(dir); // get current directory
 
+			// print out color code 
 			instructions();
 			System.out.println("Here is what we found:");
 			System.out.println("\n**************************************************************\n");
 
 			boolean quickSummary = false;
 			findGitDirs(cDir, quickSummary);
-			//System.out.println(total);
+			
+			// if there are repos make boolean true
 			if (total != 0) {
 				anyRepos = true;
 				
 			}
-			else {}
+			else {} // else keep false
 
 			ExpandStatus.expand(anyRepos);
 		}

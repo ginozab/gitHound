@@ -4,7 +4,6 @@ import java.io.*;
 public class ExpandStatus {
 
 	// int to detect if this is first repo expansion or not
-	private static int count = 0;
 
 	public static void expand(boolean anyRepos) {
 
@@ -16,14 +15,9 @@ public class ExpandStatus {
 		else {
 			// prompt print out
 			
-			if (count == 0) {
-				System.out.println("\n**************************************************************\n");
-				System.out.println("Would you like to expand the status information of a repo above?");
-			}
-			else {
-				System.out.println("**************************************************************\n");
-				System.out.println("Would you like to expand the status information of another repo above?");
-			}
+			System.out.println("\n**************************************************************\n");
+			System.out.println("Would you like to expand the status information of a repo above?");
+
 			System.out.println("Enter: (yes/no)");
 
 			// method to read in if user wants to expand a repo status or not
@@ -73,7 +67,7 @@ public class ExpandStatus {
 
 	public static void showStatus() {
 		System.out.println("Copy and paste a repo from above you would like to expand the status of:");
-		count++;
+
 		try {
 		    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 		    String s = bufferRead.readLine();
