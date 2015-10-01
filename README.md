@@ -50,10 +50,22 @@ feature is only accessible while running a full summary not a quick summary. Aft
 full summary it will ask you if you want to see an expanded status, and then prompt you to enter
 "yes" or "no".
 
-If yes, it will then prompt you to enter a working directory. Please choose from one of the 
-git repositories it showed in the full summary, do so by just copying and pasting a given directory. 
+```shell
+Would you like to expand the status information of a repo above?
+Enter: (yes/no)
+yes
+```
 
-If no, it will say "No expansion and terminate the program".
+If yes, it will then prompt you to enter a working directory.
+
+```shell
+Copy and paste a repo from above you would like to expand the status of:
+path/of/desired/expansion/repo
+```
+
+Please choose from one of the git repositories it showed in the full summary, do so by just copying and pasting a given directory. 
+
+If no, it will terminate the program.
 
 # Video Example
 
