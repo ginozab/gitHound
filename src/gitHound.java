@@ -20,6 +20,7 @@ public class gitHound {
 	private static int ahead = 0;
 	private static int modified = 0; 
 	private static int staged = 0;
+	private static int deleted = 0;
 
 	private static int total = 0;
 	// boolean to check if no repos are found
@@ -227,7 +228,7 @@ public class gitHound {
 * ***********************************************************************/
 
 	 public static int[] parseStatus(String stat) {
-	 	int[] s = {0,0,0,0,0,0};
+	 	int[] s = {0,0,0,0,0,0,0};
 		// if there are untracked files
 		if (stat.contains("Untracked files:")) {
 			untrackedF++;
@@ -258,9 +259,15 @@ public class gitHound {
 			s[4] = 1;
 		}
 
+		// if the folder has modified files not commited
+		if (stat.contains("Changes not staged for commit") && stat.contains("deleted:")) {
+			deleted++;
+			s[5] = 1;
+		}
+
 		// other output?
 		else {
-			s[5] = 1;
+			s[6] = 1;
 		}
 
 		return s;
@@ -278,8 +285,8 @@ public class gitHound {
 * ***********************************************************************/
 
 	public static void printAll(String path, int[] stats) {
-		// prints directory in red if untracked or uncommited files
-		if (stats[0] == 1 || stats[1] == 1 || stats[4] == 1) {
+		// prints directory in red if untracked or uncommited files or deleted files
+		if (stats[0] == 1 || stats[1] == 1 || stats[4] == 1 || stats[5] == 1) {
 			System.out.print(ANSI_RED + path + ANSI_RESET + "\nProblems with above repo: ");
 		}
 		// prints directory in cyan if up to date but ahead of branch
@@ -319,6 +326,11 @@ public class gitHound {
 			System.out.print(ANSI_WHITE + " +" + ANSI_RESET);
 		}
 
+		// Prints out blue + if there are deleted files
+		if (stats[5] == 1) {
+			System.out.println(ANSI_BLUE + " +" + ANSI_RESET);
+		}
+
 		else {}
 
 		System.out.print("\n");
@@ -344,6 +356,7 @@ public class gitHound {
 		System.out.println(ANSI_YELLOW + "Yellow + " + ANSI_RESET + " -> New files not commited");
 		System.out.println(ANSI_CYAN + "Cyan + " + ANSI_RESET + " -> repo ahead of origin");
 		System.out.println(ANSI_WHITE + "White + " + ANSI_RESET + " -> Modified files not commited\n");
+		System.out.println(ANSI_BLUE + "Blue + " + ANSI_RESET + " -> Deleted files not commited\n");
 
 
 	} // instructions method
@@ -366,6 +379,8 @@ public class gitHound {
 		System.out.println(modified);
 		System.out.print("Number of git repositories with staged but not committed files: ");
 		System.out.println(staged);
+		System.out.print("Number of git repositories with deleted files not committed: ");
+		System.out.println(deleted);
 		System.out.println("***********************************************************************\n");
 		System.out.print("Number of total git repositories found in specified directory: ");
 		System.out.println(total);
