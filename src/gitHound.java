@@ -355,7 +355,7 @@ public class gitHound {
 		System.out.println(ANSI_RED + "Red + " + ANSI_RESET + " -> Untracked files");
 		System.out.println(ANSI_YELLOW + "Yellow + " + ANSI_RESET + " -> New files not commited");
 		System.out.println(ANSI_CYAN + "Cyan + " + ANSI_RESET + " -> repo ahead of origin");
-		System.out.println(ANSI_WHITE + "White + " + ANSI_RESET + " -> Modified files not commited\n");
+		System.out.println(ANSI_WHITE + "White + " + ANSI_RESET + " -> Modified files not commited");
 		System.out.println(ANSI_BLUE + "Blue + " + ANSI_RESET + " -> Deleted files not commited\n");
 
 
