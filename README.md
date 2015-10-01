@@ -69,7 +69,7 @@ If no, it will terminate the program.
 
 # Video Example
 
-[![asciicast](https://asciinema.org/a/5fkzyntexny362xqofp6moyhh.png)](https://asciinema.org/a/5fkzyntexny362xqofp6moyhh)
+[![asciicast](https://asciinema.org/a/9u6q7w383orib95mdta62nb00.png)](https://asciinema.org/a/9u6q7w383orib95mdta62nb00)
 
 # Thank you for choosing gitHound!
 
