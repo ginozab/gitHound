@@ -328,7 +328,7 @@ public class gitHound {
 
 		// Prints out blue + if there are deleted files
 		if (stats[5] == 1) {
-			System.out.println(ANSI_BLUE + " +" + ANSI_RESET);
+			System.out.print(ANSI_BLUE + " +" + ANSI_RESET);
 		}
 
 		else {}
